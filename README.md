@@ -12,3 +12,9 @@ Create a virtual environment either with ```conda``` or ```venv```
 pip install uv
 uv pip install .
 ```
+
+## Build Android App
+
+```
+./scripts/build_android_app.sh
+```

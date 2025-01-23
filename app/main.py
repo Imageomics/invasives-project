@@ -3,12 +3,13 @@ from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.camera import Camera
+from kivy.uix.label import Label
+from kivy.uix. textinput import TextInput
 from kivy.lang import Builder
 
 from app.screen_names import ScreenNames
 from app.tools import get_gps_location
-
-
+from app.elements.simple_inputs import LatLongInputBox, ElevationBox, SiteIDBox, DateBox
 
 class TestCameraScreen(Screen):
     def __init__(self, *args, **kwargs):
@@ -37,7 +38,32 @@ class BeginTripScreen(Screen):
         FONT_SIZE = 32
         page = BoxLayout(padding=10, orientation="vertical")
 
-        # Begin Trip
+        # LatLong Input
+        latlong_box = LatLongInputBox()
+        page.add_widget(latlong_box)
+        
+        # Elevation Input
+        elevation_box = ElevationBox()
+        page.add_widget(elevation_box)
+        
+        # Site ID Input
+        site_id_box = SiteIDBox()
+        page.add_widget(site_id_box)
+        
+        # Date Input
+        date_box = DateBox()
+        page.add_widget(date_box)
+        
+        def test_print(instance):
+            print(latlong_box.get_lat_long())
+            print(elevation_box.get_elevation())
+        
+        # Test btn
+        text_btn = Button(text="Print Data")
+        text_btn.bind(on_press=test_print)
+        page.add_widget(text_btn)
+
+        # Go to home page
         begin_trip_btn = Button(text='Home', color="green", font_size=FONT_SIZE)
         begin_trip_btn.bind(on_press=self.goto_home_screen)
         page.add_widget(begin_trip_btn)

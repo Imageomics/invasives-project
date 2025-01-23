@@ -1,6 +1,61 @@
+from abc import abstractmethod
+
 from kivy.uix.label import Label
-from kivy.uix. textinput import TextInput
+from kivy.uix.textinput import TextInput
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
+from kivy.uix.image import Image
+
+from app.tools import get_running_app, transition_screen
+
+class ImageHolder(BoxLayout):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.image = getattr(kwargs, "image", Image(source=None))
+        self.image_box = BoxLayout()
+        
+    def set_image(self, image):
+        self.image = image
+        self.image_box.clear_widgets()
+        print(self.image)
+        self.image_box.add_widget(Image(texture=self.image.texture))
+        
+    def get_image(self):
+        return self.image
+
+class ImageBox(ImageHolder):
+    def __init__(self, parent_screen, camera_screen_name):
+        super().__init__(orientation="vertical")
+        
+        self.parent_screen = parent_screen
+        self.camera_screen_name = camera_screen_name
+        self.add_widget(self.image_box)
+        
+        # Take the picture
+        take_picture_btn = Button(text="Take Picture")
+        take_picture_btn.bind(on_press=self.take_picture)
+        self.add_widget(take_picture_btn)
+        
+    def take_picture(self, instance):
+        app = get_running_app()
+        app.set_current_image_holder(self)
+        app.set_camera_exit_screen(self.parent_screen.name)
+        transition_screen(self.parent_screen, self.camera_screen_name)
+
+class PlantNumberBox(BoxLayout):
+    def __init__(self):
+        super().__init__(orientation="vertical")
+        
+        plant_number_box = BoxLayout(orientation="horizontal")
+        plant_number_lbl = Label(text="Plant #")
+        self.plant_number_input = TextInput()
+        plant_number_box.add_widget(plant_number_lbl)
+        plant_number_box.add_widget(self.plant_number_input)
+        
+        self.add_widget(plant_number_box)
+        
+    def get_plant_number(self):
+        return self.date_input.text
 
 class DateBox(BoxLayout):
     def __init__(self):

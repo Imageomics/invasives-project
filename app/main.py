@@ -39,24 +39,29 @@ class BeginTripScreen(Screen):
         page = BoxLayout(padding=10, orientation="vertical")
 
         # LatLong Input
-        latlong_box = LatLongInputBox()
-        page.add_widget(latlong_box)
+        self.latlong_box = LatLongInputBox()
+        page.add_widget(self.latlong_box)
         
         # Elevation Input
-        elevation_box = ElevationBox()
-        page.add_widget(elevation_box)
+        self.elevation_box = ElevationBox()
+        page.add_widget(self.elevation_box)
         
         # Site ID Input
-        site_id_box = SiteIDBox()
-        page.add_widget(site_id_box)
+        self.site_id_box = SiteIDBox()
+        page.add_widget(self.site_id_box)
         
         # Date Input
-        date_box = DateBox()
-        page.add_widget(date_box)
+        self.date_box = DateBox()
+        page.add_widget(self.date_box)
+        
+        # Create Trip Btn
+        begin_trip_btn = Button(text='Create Trip', color="green", font_size=FONT_SIZE)
+        begin_trip_btn.bind(on_press=self.create_trip)
+        page.add_widget(begin_trip_btn)
         
         def test_print(instance):
-            print(latlong_box.get_lat_long())
-            print(elevation_box.get_elevation())
+            print(self.latlong_box.get_lat_long())
+            print(self.elevation_box.get_elevation())
         
         # Test btn
         text_btn = Button(text="Print Data")
@@ -64,15 +69,27 @@ class BeginTripScreen(Screen):
         page.add_widget(text_btn)
 
         # Go to home page
-        begin_trip_btn = Button(text='Home', color="green", font_size=FONT_SIZE)
-        begin_trip_btn.bind(on_press=self.goto_home_screen)
-        page.add_widget(begin_trip_btn)
+        go_home_btn = Button(text='Home', color="blue", font_size=FONT_SIZE)
+        go_home_btn.bind(on_press=self.goto_home_screen)
+        page.add_widget(go_home_btn)
         
         self.add_widget(page)
         
     def goto_home_screen(self, instance):
         self.manager.transition.direction = 'right'
         self.manager.current = ScreenNames.HOME
+        
+    def create_trip(self, instance):
+        data_str = f"GPS: {self.latlong_box.get_lat_long()}\n"
+        data_str += f"Elevation: {self.elevation_box.get_elevation()}\n"
+        data_str += f"Date: {self.date_box.get_date()}\n"
+        data_str += f"Site ID: {self.site_id_box.get_site_id()}\n"
+        with open("app_data/data.txt", 'w') as f:
+            f.write(data_str)
+        print(data_str)
+        #self.manager.transition.direction = 'left'
+        #self.manager.current = ScreenNames.HOME
+        
 
 class HomeScreen(Screen):
     def __init__(self, *args, **kwargs):

@@ -10,7 +10,7 @@ This work was supported by both the [Imageomics Institute](https://imageomics.or
 Create a virtual environment either with ```conda``` or ```venv```
 ```
 pip install uv
-uv pip install .
+uv pip install -e .
 ```
 
 ## Build Android App

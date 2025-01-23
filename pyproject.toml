@@ -24,11 +24,11 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = ""
-Documentation = ""
+#Homepage = ""
+#Documentation = ""
 Repository = "https://github.com/Imageomics/invasives-project"
-"Bug Tracker" = ""
-Changelog = ""
+#"Bug Tracker" = ""
+#Changelog = ""
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/inv_plts", "app"]

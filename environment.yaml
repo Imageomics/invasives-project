@@ -1,0 +1,11 @@
+name: invasiveplants
+channels:
+  - defaults
+dependencies:
+  - pip=24.2
+  - python=3.11.11
+  - pip:
+      - jupyterlab==4.3.4
+      - numpy==2.2.2
+      - opencv-python==4.11.0.86
+      - matplotlib==3.10.0   

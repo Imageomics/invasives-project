@@ -34,6 +34,14 @@ class CameraScreen(Screen):
         
         transition_screen(self, app.get_camera_exit_screen())
         
+class AddLeavesScreen(Screen):
+    def __init__(self):
+        super().__init__(name=ScreenNames.ADD_LEAVES)
+        
+        page = BoxLayout(padding=10, orientation="vertical")
+        
+        # TODO add plant number here
+        
 class AddPlantScreen(Screen):
     def __init__(self):
         super().__init__(name=ScreenNames.ADD_PLANT)
@@ -68,7 +76,17 @@ class AddPlantScreen(Screen):
         self.high_img_box = ImageBox(parent_screen=self, camera_screen_name=ScreenNames.CAMERA_SCREEN)
         page.add_widget(self.high_img_box)
         
+        # Add Leaves button
+        add_leaves_button = Button(text="Add Leaves")
+        add_leaves_button.bind(on_press=self.goto_add_leaves_screen)
+        page.add_widget(add_leaves_button)
+        
         self.add_widget(page)
+        
+    def goto_add_leaves_screen(self, instance):
+        # Save information here
+        transition_screen(self, ScreenNames.ADD_LEAVES)
+        
 
 class PlantListScreen(Screen):
     def __init__(self):

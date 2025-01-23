@@ -8,3 +8,4 @@ class ScreenNames(StrEnum):
     CAMERA_SCREEN = "camera_screen"
     PLANT_LIST = "plant_list"
     ADD_PLANT = "add_plant"
+    ADD_LEAVES = "add_leaves"

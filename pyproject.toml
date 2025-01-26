@@ -34,4 +34,4 @@ Repository = "https://github.com/Imageomics/invasives-project"
 #Changelog = ""
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/inv_plts", "app"]
+packages = ["src/inv_plts", "app", "labeling_app"]

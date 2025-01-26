@@ -55,7 +55,7 @@ class PlantNumberBox(BoxLayout):
         self.add_widget(plant_number_box)
         
     def get_plant_number(self):
-        return self.date_input.text
+        return self.plant_number_input.text
 
 class DateBox(BoxLayout):
     def __init__(self):

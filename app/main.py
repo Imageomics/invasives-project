@@ -1,3 +1,6 @@
+import os
+from kivy.utils import platform
+
 from kivy.app import App
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
@@ -8,7 +11,7 @@ from kivy.uix. textinput import TextInput
 from kivy.lang import Builder
 
 from app.screen_names import ScreenNames
-from app.tools import get_gps_location, load_data_store, get_running_app, transition_screen
+from app.tools import get_gps_location, load_data_store, get_running_app, transition_screen, get_image_save_dir
 from app.elements.simple_inputs import ImageHolder, LatLongInputBox, ElevationBox, SiteIDBox, DateBox, PlantNumberBox, ImageBox
 
 class CameraScreen(Screen):
@@ -38,9 +41,15 @@ class AddLeavesScreen(Screen):
     def __init__(self):
         super().__init__(name=ScreenNames.ADD_LEAVES)
         
+        self.leaves = []
+        
         page = BoxLayout(padding=10, orientation="vertical")
         
         # TODO add plant number here
+        
+        # TODO: for each leaf have: level, initial label
+        
+        self.add_widget(page)
         
 class AddPlantScreen(Screen):
     def __init__(self):
@@ -84,7 +93,56 @@ class AddPlantScreen(Screen):
         self.add_widget(page)
         
     def goto_add_leaves_screen(self, instance):
-        # Save information here
+        data_store = load_data_store()
+        app = get_running_app()
+        data_key = app.get_current_data_key()
+        
+        cur_data = data_store.get(data_key)
+        cur_plants = {}
+        if "plants" in cur_data:
+            cur_plants = cur_data["plants"]
+        
+        plant_num = self.plant_box.get_plant_number()
+        gps = self.latlong_box.get_lat_long()
+        elevation = self.elevation_box.get_elevation()
+        
+        full_img = self.full_img_box.get_image()
+        low_img = self.low_img_box.get_image()
+        mid_img = self.mid_img_box.get_image()
+        high_img = self.high_img_box.get_image()
+        
+        img_dir = get_image_save_dir()
+        os.makedirs(img_dir, exist_ok="True")
+        filename_base = f"{data_key}_P{plant_num}"
+        
+        # TODO: check if images are null
+        full_img_path = f"{filename_base}_full.png"
+        full_img.save(os.path.join(img_dir, full_img_path))
+        
+        low_img_path = f"{filename_base}_low.png"
+        low_img.save(os.path.join(img_dir, low_img_path))
+        
+        mid_img_path = f"{filename_base}_mid.png"
+        mid_img.save(os.path.join(img_dir, mid_img_path))
+        
+        high_img_path = f"{filename_base}_high.png"
+        high_img.save(os.path.join(img_dir, high_img_path))
+        
+        cur_plants[plant_num] = {
+            "plant_num" : plant_num,
+            "gps" : gps,
+            "elevation" : elevation,
+            "full_img_path" : full_img_path,
+            "low_img_path" : low_img_path,
+            "mid_img_path" : mid_img_path,
+            "high_img_path" : high_img_path,
+        }
+        
+        data_store.put(
+            data_key,
+            plants=cur_plants,
+        )
+        
         transition_screen(self, ScreenNames.ADD_LEAVES)
         
 
@@ -151,7 +209,7 @@ class BeginTripScreen(Screen):
         gps = self.latlong_box.get_lat_long()
         elevation = self.elevation_box.get_elevation()
         site_id = self.site_id_box.get_site_id()
-        data_key = f"S{site_id}_{date.replace("/", "_")}"
+        data_key = f"S{site_id}_{date.replace('/', '_')}"
         
         # TODO Check if exists, may need to be careful with overriding
         
@@ -203,6 +261,14 @@ class LeafDataCollectionApp(App):
         self.data_key = None
         self.camera_exit_screen_name = ScreenNames.HOME
         self.current_image_holder: ImageHolder = None
+        self._setup_camera()
+        
+        
+    def _setup_camera(self):
+        if platform == "android":
+            from android.permissions import request_permissions, Permission
+            request_permissions([Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE])
+        
         self.camera = Camera(play=True, size_hint=(1, 1), allow_stretch=True, keep_ratio=True)
         
     def set_current_data_key(self, data_key: str):
@@ -233,6 +299,7 @@ class LeafDataCollectionApp(App):
         sm.add_widget(PlantListScreen())
         sm.add_widget(AddPlantScreen())
         sm.add_widget(CameraScreen())
+        sm.add_widget(AddLeavesScreen())
         return sm
 
 

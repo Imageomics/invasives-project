@@ -15,6 +15,11 @@ uv pip install -e .
 
 ## Build Android App
 
+This doesn't work in Windows, so you may want to use Linux. You must have the Java build tools ```javac```. If you don't, and you used conda for your virtual environment, you can run the following command in your conda environment.
+```
+conda install -c conda-forge::openjdk==17.0.13
+```
+
 ```
 ./scripts/build_android_app.sh
 ```

@@ -2,14 +2,14 @@ import torch
 from torch.optim import SGD
 from torch.nn import CrossEntropyLoss
 
-from inv_plts.data.datasets import BasicInvasivePlantsDataset
+from inv_plts.data.datasets import BasicDataset
 from inv_plts.models.simple import BasicCNN
 
 def test_basic_cnn_forward():
     net = BasicCNN()
     
-    dataset = BasicInvasivePlantsDataset()
-    data: BasicInvasivePlantsDataset.DataStructure
+    dataset = BasicDataset()
+    data: BasicDataset.DataStructure
     
     for data in dataset:
         out = net(data.image.unsqueeze(0))
@@ -17,8 +17,8 @@ def test_basic_cnn_forward():
 def test_basic_cnn_train():
     net = BasicCNN()
     
-    dataset = BasicInvasivePlantsDataset()
-    data: BasicInvasivePlantsDataset.DataStructure
+    dataset = BasicDataset()
+    data: BasicDataset.DataStructure
     
     optimizer = SGD(net.parameters(), lr=0.001)
     cel_fn = CrossEntropyLoss()

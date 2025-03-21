@@ -1,8 +1,8 @@
-from inv_plts.data.datasets import BasicInvasivePlantsDataset
+from inv_plts.data.datasets import BasicDataset
 
 def test_basic_dataset():
-    dataset = BasicInvasivePlantsDataset()
-    data: BasicInvasivePlantsDataset.DataStructure
+    dataset = BasicDataset()
+    data: BasicDataset.DataStructure
     for data in dataset:
         data.image + 10
         data.label - 5

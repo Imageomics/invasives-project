@@ -1,5 +1,7 @@
 from dataclasses import dataclass
+from pathlib import Path
 
+from tqdm.auto import tqdm
 import pandas as pd
 import torch
 from torch.utils.data import Dataset
@@ -35,14 +37,41 @@ class BasicInvasivePlantsDataset(Dataset):
         self.df = pd.read_csv(metadata_csv)
         self.df = self.df.fillna("NA")
         self.transform = transform
+        self.preprocess_dir = None
 
-    def __len__(self):
-        return self.df.shape[0]
+    def preprocess(self, preprocess_dir):
+        preprocess_dir = Path(preprocess_dir)
+        preprocess_dir.mkdir(parents=True, exist_ok=True)
+        for i in tqdm(
+            range(self.df.shape[0]), desc="Preprocessing Dataset", colour="#5AC433"
+        ):
+            row = self.df.iloc[i]
+            fname = row["Original\nFilename"]
+            session_folder = row["Session\nFolder Name"]
+            img_path = self._get_image_path(session_folder=session_folder, fname=fname)
+            img = Image.open(img_path)
+            new_image_path = preprocess_dir / f"{session_folder}/{fname}"
+            new_image_path.parent.mkdir(parents=True, exist_ok=True)
+            if img.size[0] > 512 or img.size[1] > 512:
+                img = img.resize((512, 512))
+            img.save(new_image_path)
+
+        self.preprocess_dir = preprocess_dir
+
+    def _get_image_path(self, session_folder, fname):
+        if self.preprocess_dir is None:
+            img_path = self.image_root / f"{session_folder}/{fname}"
+        else:
+            img_path = self.preprocess_dir / f"{session_folder}/{fname}"
+        return img_path
 
     @dataclass
     class DataStructure:
         image: torch.Tensor
         label: int
+
+    def __len__(self):
+        return self.df.shape[0]
 
     def __getitem__(self, idx) -> DataStructure:
         row = self.df.iloc[idx]
@@ -50,7 +79,7 @@ class BasicInvasivePlantsDataset(Dataset):
         # Image
         fname = row["Original\nFilename"]
         session_folder = row["Session\nFolder Name"]
-        img_path = self.image_root / f"{session_folder}/{fname}"
+        img_path = self._get_image_path(session_folder=session_folder, fname=fname)
         img = Image.open(img_path)
         if self.transform:
             img = self.transform(img)

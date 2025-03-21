@@ -6,12 +6,20 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "pytest>=8.3.5",
-    "ipykernel>=6.29.5",
     "pillow>=11.1.0",
     "pandas>=2.2.3",
     "torch>=2.6.0",
     "torchvision>=0.21.0",
     "tqdm>=4.67.1",
+    "pip>=25.0.1",
+    "plotly>=6.0.1",
+    "anywidget>=0.9.16",
+    "jedi>=0.19.2",
+    "ipykernel>=6.29.5",
+    "notebook>=7.3.3",
+    "nbformat>=5.10.4",
+    "jupyter>=1.1.1",
+    "ipywidgets>=8.1.5",
 ]
 
 [build-system]

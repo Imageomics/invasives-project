@@ -1,7 +1,6 @@
 from pathlib import Path
 from tqdm.auto import tqdm
 
-import torch
 from torch.optim import SGD
 from torch.nn import BCELoss
 import torchvision.transforms as T

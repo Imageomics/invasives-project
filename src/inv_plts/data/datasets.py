@@ -32,9 +32,15 @@ class BasicDataset(Dataset):
 
 
 class BasicInvasivePlantsDataset(Dataset):
-    def __init__(self, image_root, metadata_csv, transform=None):
+    def __init__(self, image_root, df=None, metadata_csv=None, transform=None):
+        if df is not None:
+            self.df = df
+        elif metadata_csv is not None:
+            self.df = pd.read_csv(metadata_csv)
+        else:
+            raise ValueError("Either df or metadata_csv must be given")
+        
         self.image_root = image_root
-        self.df = pd.read_csv(metadata_csv)
         self.df = self.df.fillna("NA")
         self.transform = transform
         self.preprocess_dir = None
@@ -74,6 +80,7 @@ class BasicInvasivePlantsDataset(Dataset):
         return self.df.shape[0]
 
     def __getitem__(self, idx) -> DataStructure:
+        idx = int(idx)
         row = self.df.iloc[idx]
 
         # Image

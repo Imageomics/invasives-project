@@ -39,7 +39,7 @@ class BasicInvasivePlantsDataset(Dataset):
             self.df = pd.read_csv(metadata_csv)
         else:
             raise ValueError("Either df or metadata_csv must be given")
-        
+
         self.image_root = image_root
         self.df = self.df.fillna("NA")
         self.transform = transform
@@ -112,3 +112,12 @@ class BasicInvasivePlantsDataset(Dataset):
         ).type(torch.FloatTensor)
 
         return BasicInvasivePlantsDataset.DataStructure(image=img, label=labels)
+
+    def get_labels(self):
+        return [
+            "Healthy",
+            "Leaf Miner",
+            "Rust",
+            "Other Insect",
+            "Mechanical",
+        ]

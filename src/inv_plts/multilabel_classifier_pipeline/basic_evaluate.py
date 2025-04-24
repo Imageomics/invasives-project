@@ -229,7 +229,7 @@ def evaluate(
         accuracy = accuracy_score(all_testy[i], preds_threshold)
         accuracies.append(accuracy)
           
-    breakpoint()
+    # breakpoint()
     
     eps = 0.000001
     results = {
@@ -313,8 +313,8 @@ epoch = ckpt_t['epoch']
 # Get data loaders
 if args.server == 'pda':
 #     train_file = Path('/data/DatasetTrackFinalData/Identification/trait_identification_train.csv')
-    val_file = Path('/home/ksmehrab/InvasivePlants/MultilabelPipeline/Metadata/linked_metadata.csv')
-    test_file = Path('/home/ksmehrab/InvasivePlants/MultilabelPipeline/Metadata/linked_metadata.csv')
+    val_file = Path('/home/ksmehrab/InvasivePlants/MultilabelPipeline/Metadata/invasive_dorsal_val.csv')
+    test_file = Path('/home/ksmehrab/InvasivePlants/MultilabelPipeline/Metadata/invasive_dorsal_test.csv')
     img_dir = Path('/data/InvasivePlantsData/png-512')
 elif args.server == 'arc':
     raise NotImplementedError('Arc server not implemented')

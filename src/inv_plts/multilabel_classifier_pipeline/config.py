@@ -132,9 +132,9 @@ if DATASET == 'invasive-512':
 
     if ARGS.server == 'pda':
         # raise NotImplementedError('Need to change the data files')
-        train_file = Path('/home/ksmehrab/InvasivePlants/MultilabelPipeline/Metadata/linked_metadata.csv')
-        val_file = Path('/home/ksmehrab/InvasivePlants/MultilabelPipeline/Metadata/linked_metadata.csv')
-        test_file = Path('/home/ksmehrab/InvasivePlants/MultilabelPipeline/Metadata/linked_metadata.csv')
+        train_file = Path('/home/ksmehrab/InvasivePlants/MultilabelPipeline/Metadata/invasive_dorsal_train.csv')
+        val_file = Path('/home/ksmehrab/InvasivePlants/MultilabelPipeline/Metadata/invasive_dorsal_val.csv')
+        test_file = Path('/home/ksmehrab/InvasivePlants/MultilabelPipeline/Metadata/invasive_dorsal_test.csv')
         img_dir = Path('/data/InvasivePlantsData/png-512')
     elif ARGS.server == 'arc':
         raise NotImplementedError('Need to setup for ARC')

@@ -51,15 +51,12 @@ class BasicInvasivePlantsDataset(Dataset):
             img = self.transform(img)
 
         # Labels
-        is_healthy = row["Healthy"].lower().strip() == "yes"
-        leaf_miner_damage = row["Leaf Miner?"].lower().strip() == "yes"
-        rust_damage = row["Rust?"].lower().strip() == "yes"
-        other_insect_damage = (
-            row["Other Insect? (catipillar bites, etc.)"].lower().strip() == "yes"
-        )
-        mechanical_damage = (
-            row["Mechanical? (human, animal, herbicide, etc.)"].lower().strip() == "yes"
-        )
+        is_healthy = row["Healthy"]
+        leaf_miner_damage = row["Leaf Miner?"]
+        rust_damage = row["Rust?"]
+        other_insect_damage = row["Other Insect? (catipillar bites, etc.)"]
+        mechanical_damage = row["Mechanical? (human, animal, herbicide, etc.)"]
+        
         labels = [
             is_healthy,
             leaf_miner_damage,

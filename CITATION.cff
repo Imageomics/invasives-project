@@ -17,14 +17,14 @@ authors:
   - family-names: Viotti
     given-names: Leonardo
 cff-version: 1.2.0
-date-released: "2025-10-29"
+date-released: "2025-12-16"
 identifiers:
-  - description: "The GitHub release URL of tag `initial`."
+  - description: ""
     type: url
-    value: "https://github.com/Imageomics/invasives-project/releases/tag/initial"
-  - description: "The GitHub URL of the commit tagged with initial."
+    value: ""
+  - description: ""
     type: url
-    value: "https://github.com/Imageomics/invasives-project/tree/0772485593e06c1d2e6b4d70d6afc6239f912139"
+    value: ""
 keywords:
   - imageomics
   - invasive
@@ -33,32 +33,10 @@ keywords:
   - disease
   - insect
   - damage
-license:
+license: MIT
 message: "If you find this software helpful in your research, please cite both the software and our dataset."
 repository-code: "https://github.com/Imageomics/invasives-project"
 title: "Invasive Species Biocontrol Quantification"
 version: 1.0.0
 doi: <DOI from Zenodo>    # version agnostic DOI
 type: software
-preferred-citation:
-  type: article
-  authors:
-    - family-names:
-      given-names:
-    - family-names:
-      given-names:
-  title: 
-  year:
-  journal:
-  doi: 
-references:
-  - authors:
-      - family-names:
-        given-names:
-      - family-names:
-        given-names:
-    title: 
-    version:
-    type:
-    doi: 
-    date-released:

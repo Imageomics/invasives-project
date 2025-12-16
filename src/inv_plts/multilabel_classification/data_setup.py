@@ -5,7 +5,7 @@ from torchvision import transforms
 import numpy as np
 import torchvision.transforms.functional as F
 import json
-from invasivedataset import BasicInvasivePlantsDataset
+from inv_plts.multilabel_classification.invasivedataset import BasicInvasivePlantsDataset
 import pandas as pd
 
 def get_dataset_and_dataloader(data_file, img_dir, transform, batch_size, num_workers):

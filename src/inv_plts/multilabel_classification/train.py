@@ -14,9 +14,9 @@ from tqdm import tqdm
 import wandb
 import json
 
-from config import *
+from inv_plts.multilabel_classification.config import *
 
-from model import get_custom_model
+from inv_plts.multilabel_classification.model import get_custom_model
 
 def train_epoch(model, criterion, optimizer, data_loader):
     model.train()

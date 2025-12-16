@@ -30,7 +30,7 @@ We report classification results for the following models: [ViT](https://arxiv.o
 The [Faster R-CNN](https://arxiv.org/abs/1506.01497) baseline can be ran with the following notebook: `notebooks/rcnn_baseline/FasterRCNN_pipeline.ipynb`. The training and test splits are also given in `data/rcnn_cropped_annotations_[test,train].csv`. The archived images used to produce these results is available in the [images](https://huggingface.co/datasets/imageomics/invasive_plants_hawaii/tree/main/images) folder of our HuggingFace Repository (filename : `rcnn_images.zip`). 
 
 ## Zero-shot Segmentation using Molmo and SAM2 
-The code for running [Molmo](https://arxiv.org/abs/2409.17146) and [SAM2](https://arxiv.org/abs/2408.00714) are in the corresponding notebooks in this directory: `src/zero_shot_segmentation_pipeline`. Some example image names used for the qualitative analysis is provided in `sample_images.csv`. First, we need to run the molmo notebook `run_molmo.ipynb` to generate points. Then, we need to run the sam2 notebook `run_sam2_and_visualize.ipynb` to generate segmentation masks and visualize on images. 
+The code for running [Molmo](https://arxiv.org/abs/2409.17146) and [SAM2](https://arxiv.org/abs/2408.00714) are in the corresponding notebooks in this directory: `notebooks/zero_shot_segmentation_pipeline`. Some example image names used for the qualitative analysis is provided in `data/sample_images.csv`. First, we need to run the molmo notebook `notebooks/run_molmo.ipynb` to generate points. Then, we need to run the sam2 notebook `notebooks/run_sam2_and_visualize.ipynb` to generate segmentation masks and visualize on images. 
 
 ## Leaf Reconstruction
 

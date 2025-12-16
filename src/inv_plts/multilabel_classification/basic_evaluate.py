@@ -1,8 +1,6 @@
 import torch
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-from model import get_custom_model
-from data_setup import get_transform, get_dataset_and_dataloader
 from matplotlib import pyplot
 
 from pathlib import Path
@@ -16,6 +14,9 @@ from sklearn.metrics import roc_curve, precision_recall_curve
 import os
 import json
 import argparse
+
+from inv_plts.multilabel_classification.model import get_custom_model
+from inv_plts.multilabel_classification.data_setup import get_transform, get_dataset_and_dataloader
 
 ## In the script, save the precision-recall curves for each trait as images. Control this with an argument  
 
@@ -273,7 +274,7 @@ def evaluate_all_tests(
     return all_results
 
 parser = argparse.ArgumentParser(description='Trait Identification Evaluation')
-parser.add_argument('--model_name', type=str, choices=['resnet34', 'resnet18', 'resnet50', 'vit_b_32', 'vit_b_16', 'vgg19', 'swin_b', 'inception_v3', 'convnext_base', 'efficientnet_v2_m', 'mobilenet_v3_large', 'maxvit_t', 'resnext50_32x4d', 'cvt_13', 'mobile_vit_xs', 'mobile_vit_v2', 'regnet_y', 'diet_distilled_s', 'pvt_v2', 'swinb_22k'], help='model type')
+parser.add_argument('--model_name', type=str, default='resnet50', choices=['resnet34', 'resnet18', 'resnet50', 'vit_b_32', 'vit_b_16', 'vgg19', 'swin_b', 'inception_v3', 'convnext_base', 'efficientnet_v2_m', 'mobilenet_v3_large', 'maxvit_t', 'resnext50_32x4d', 'cvt_13', 'mobile_vit_xs', 'mobile_vit_v2', 'regnet_y', 'diet_distilled_s', 'pvt_v2', 'swinb_22k'], help='model type')
 parser.add_argument('--checkpoint_path', default=None, type=str,
                     help='checkpoint path of network for evaluate')
 parser.add_argument('--server', default='pda', type=str, choices=['pda', 'arc'], help='Which server we are running on')

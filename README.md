@@ -1,14 +1,40 @@
 # Invasives Species Biocontrol Quantification
 Repository for the invasive species biocontrol quantification project as part of the AI &amp; Ecology Course field component in HI. The data associated with this project is available on Hugging Face: [Imageomics/invasive_plants_hawaii](https://huggingface.co/datasets/imageomics/invasive_plants_hawaii).
 
+## Abstract
+Invasive species are non-native organisms to an ecosystem that cause economic, environmental, and/or human harm. A soapbush (Clidemia Hirta) is such an invasive species forming dense thickets smothering other native plant life in Hawaii. Several biocontrols were released to control the spread of the soapbush, but quantifying the effect of such a release is difficult due to time consuming manual inspection. To alleviate these efforts, we collected a dataset of individual leaves from Clidemia Hirta bushes which were then photographed and labeled according to their damage type. We implemented baselines for automatic damage classification, detection, and segmentation for individual leaves.
+
 ## Environment Setup
 Install [uv](https://docs.astral.sh/uv/) if not already done, and run the following command:
 ```
 uv sync
 ```
 
-## Training Classifier
-TODO
+## Classification Baseline
+The classification baseline results can be found in `src/inv_plts/multilabel_classification`.
+
+### Training
+To train a classification baseline model run the following command `uv run python -m inv_plts.multilabel_classification.train --model resnet50`
+More information on command line arguments can be found in `src/inv_plts/multilabel_classification.config.py`
+More examples of these commands can be found in `scripts/train_classifiers.sh`
+
+### Evaluation
+To evaluate a classification baseline model run the following command `uv run python -m inv_plts.multilabel_classification.basic_evaluate --model resnet50`
+More information on command line arguments can be found in `src/inv_plts/multilabel_classification.basic_evalute.py`
+More examples of these commands can be found in `scripts/evaluate_classifiers.sh`
+
+### Models
+We report classification results for the following models: [ViT](https://arxiv.org/abs/2010.11929), [Resnet](https://arxiv.org/abs/1512.03385), [ConvNext](https://arxiv.org/abs/2201.03545), [CvT](https://arxiv.org/abs/2103.15808), [MaxViT](https://arxiv.org/abs/2204.01697)
+
+## Faster R-CNN baseline
+The [Faster R-CNN](https://arxiv.org/abs/1506.01497) baseline can be ran with the following notebook: `notebooks/rcnn_baseline/FasterRCNN_pipeline.ipynb`. The training and test splits are also given in `data/rcnn_cropped_annotations_[test,train].csv`. The archived images used to produce these results is available in the [images](https://huggingface.co/datasets/imageomics/invasive_plants_hawaii/tree/main/images) folder of our HuggingFace Repository (filename : `rcnn_images.zip`). 
+
+## Molmo 
+[TODO]
+
+## Leaf Reconstruction
+
+The code for our Leaf Reconstruction baseline is available in the `scripts/leaf_reconstruction`. It contains the code to reproduce the results shown in our report (`scripts/leaf_reconstruction/get_absolute_error.py`), as well as the code to compute the ground truth damage ratio (`scripts/leaf_reconstruction/damage_calculation_ground_truth.py`). The code for testing HerbiEstim on a set of images can be found in the original repository of the authors [here](https://github.com/ZihuiWang1/HerbiEstim). The archived images used to produce our results is available in the [images](https://huggingface.co/datasets/imageomics/invasive_plants_hawaii/tree/main/images) folder of our HuggingFace Repository (filename : `Dataset_Leaf_Reconstruction.zip`). 
 
 ## Acknowledgement
 

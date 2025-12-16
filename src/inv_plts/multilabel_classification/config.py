@@ -18,7 +18,7 @@ from sklearn.metrics import f1_score, precision_score, recall_score, average_pre
 
 from torch.utils.data import Subset, Dataset, DataLoader
 
-from data_setup import get_transform, get_dataset_and_dataloader, get_pos_weight
+from inv_plts.multilabel_classification.data_setup import get_transform, get_dataset_and_dataloader, get_pos_weight
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 cudnn.benchmark = True
@@ -39,10 +39,10 @@ def parse_args():
     parser.add_argument('--output_path', default=None, type=str,
                         help='path to save all outputs')
     parser.add_argument('--seed', default=None, type=int, help='random seed')
-    parser.add_argument('--dataset', required=True,
-                        choices=['invasive-512'], help='Dataset')
-    parser.add_argument('--optimizer', required=True,
-                        choices=['SGD', 'AdamW'], help='Optimizer to use')
+    parser.add_argument('--dataset',
+                        choices=['invasive-512'], default='invasive-512', help='Dataset')
+    parser.add_argument('--optimizer',
+                        choices=['SGD', 'AdamW'], default='SGD', help='Optimizer to use')
     parser.add_argument('--decay', default=2e-4, type=float, help='weight decay')
     parser.add_argument('--no-augment', dest='augment', action='store_false',
                         help='use standard augmentation (default: True)')

@@ -1,0 +1,64 @@
+abstract: "Invasive species are non-native organisms to an ecosystem that cause economic, 
+  environmental, and/or human harm. A soapbush (Clidemia Hirta) is such an invasive species 
+  forming dense thickets smothering other native plant life in Hawaii. Several biocontrols 
+  were released to control the spread of the soapbush, but quantifying the effect of such a 
+  release is difficult due to time consuming manual inspection. To alleviate these efforts,
+  we collected a dataset of individual leaves from Clidemia Hirta bushes which were then
+  photographed and labeled according to their damage type. We implemented baselines for
+  automatic damage classification, detection, and segmentation for individual leaves."
+
+authors:
+  - family-names: Carlyn
+    given-names: David
+  - family-names: Villeneuve
+    given-names: Catherine
+  - family-names: Mehrab
+    given-names: Kazi Sajeed
+  - family-names: Viotti
+    given-names: Leonardo
+cff-version: 1.2.0
+date-released: "2025-10-29"
+identifiers:
+  - description: "The GitHub release URL of tag `initial`."
+    type: url
+    value: "https://github.com/Imageomics/invasives-project/releases/tag/initial"
+  - description: "The GitHub URL of the commit tagged with initial."
+    type: url
+    value: "https://github.com/Imageomics/invasives-project/tree/0772485593e06c1d2e6b4d70d6afc6239f912139"
+keywords:
+  - imageomics
+  - invasive
+  - leaves
+  - fungi
+  - disease
+  - insect
+  - damage
+license:
+message: "If you find this software helpful in your research, please cite both the software and our dataset."
+repository-code: "https://github.com/Imageomics/invasives-project"
+title: "Invasive Species Biocontrol Quantification"
+version: 1.0.0
+doi: <DOI from Zenodo>    # version agnostic DOI
+type: software
+preferred-citation:
+  type: article
+  authors:
+    - family-names:
+      given-names:
+    - family-names:
+      given-names:
+  title: 
+  year:
+  journal:
+  doi: 
+references:
+  - authors:
+      - family-names:
+        given-names:
+      - family-names:
+        given-names:
+    title: 
+    version:
+    type:
+    doi: 
+    date-released:

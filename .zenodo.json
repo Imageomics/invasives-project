@@ -1,0 +1,51 @@
+{
+    "creators": [
+      {
+          "name": "Carlyn, David",
+          "orcid": "",
+          "affiliation": "The Ohio State University"
+      },
+      {
+          "name": "Villeneuve, Catherine",
+          "orcid": "",
+          "affiliation": "McGill University, Mila"
+      },
+      {
+          "name": "Mehrab, Kazi Sajeed",
+          "orcid": "",
+          "affiliation": "Virginia Tech"
+      },
+      {
+          "name": "Viotti, Leonardo",
+          "orcid": "",
+          "affiliation": "University of Pittsburg"
+      }
+    ],
+    "description": "Invasive species are non-native organisms to an ecosystem that cause economic, environmental, and/or human harm. A soapbush (Clidemia Hirta) is such an invasive species forming dense thickets smothering other native plant life in Hawaii. Several biocontrols were released to control the spread of the soapbush, but quantifying the effect of such a release is difficult due to time consuming manual inspection. To alleviate these efforts, we collected a dataset of individual leaves from Clidemia Hirta bushes which were then photographed and labeled according to their damage type. We implemented baselines for automatic damage classification, detection, and segmentation for individual leaves.",
+    "keywords": [
+      "imageomics",
+      "invasive",
+      "leaves",
+      "fungi",
+      "disease",
+      "insect",
+      "damage"
+    ],
+    "title": "Invasives Species Biocontrol Quantification",
+    "version": "1.0.0",
+    "license": {
+        "id": "MIT"
+    },
+    "publication_date": "2025-12-16",
+    "grants": [
+        {
+            "id": "021nxhr62::2118240"
+        },
+        {
+            "id": "021nxhr62::2330423"
+        },
+        {
+            "id": "10.13039/501100000038::585136"
+        }
+    ] 
+}

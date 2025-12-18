@@ -19,12 +19,12 @@ authors:
 cff-version: 1.2.0
 date-released: "2025-12-18"
 identifiers:
-  - description: ""
+  - description: "The GitHub release URL of tag v1.0.0."
     type: url
-    value: ""
-  - description: ""
+    value: "https://github.com/Imageomics/invasives-project/releases/tag/v1.0.0"
+  - description: "The GitHub URL of the commit tagged with v1.0.0."
     type: url
-    value: ""
+    value: "https://github.com/Imageomics/invasives-project/tree/6e6544b387c0690542db0306204d695718b8de47"
 keywords:
   - imageomics
   - invasive
@@ -38,5 +38,5 @@ message: "If you find this software helpful in your research, please cite both t
 repository-code: "https://github.com/Imageomics/invasives-project"
 title: "Invasive Species Biocontrol Quantification"
 version: 1.0.0
-doi: <DOI from Zenodo>    # version agnostic DOI
+doi: "10.5281/zenodo.17981675"
 type: software

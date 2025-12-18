@@ -14,14 +14,31 @@ uv sync
 The classification baseline results can be found in `src/inv_plts/multilabel_classification`.
 
 ### Training
-To train a classification baseline model run the following command `uv run python -m inv_plts.multilabel_classification.train --model resnet50`
-More information on command line arguments can be found in `src/inv_plts/multilabel_classification.config.py`
-More examples of these commands can be found in `scripts/train_classifiers.sh`
+To train a classification baseline model run the following command 
+```
+uv run python -m inv_plts.multilabel_classification.train --model resnet50
+```
+
+More information on command line arguments can be found in 
+```
+src/inv_plts/multilabel_classification.config.py
+```
+More examples of these commands can be found in 
+```
+scripts/train_classifiers.sh
+```
 
 ### Evaluation
-To evaluate a classification baseline model run the following command `uv run python -m inv_plts.multilabel_classification.basic_evaluate --model resnet50`
-More information on command line arguments can be found in `src/inv_plts/multilabel_classification.basic_evalute.py`
-More examples of these commands can be found in `scripts/evaluate_classifiers.sh`
+To evaluate a classification baseline model run the following command 
+```
+uv run python -m inv_plts.multilabel_classification.basic_evaluate --model resnet50
+```
+More information on command line arguments can be found in ```
+src/inv_plts/multilabel_classification.basic_evalute.py
+```
+More examples of these commands can be found in ```
+scripts/evaluate_classifiers.sh
+```
 
 ### Models
 We report classification results for the following models: [ViT](https://arxiv.org/abs/2010.11929), [Resnet](https://arxiv.org/abs/1512.03385), [ConvNext](https://arxiv.org/abs/2201.03545), [CvT](https://arxiv.org/abs/2103.15808), [MaxViT](https://arxiv.org/abs/2204.01697)

@@ -11,30 +11,40 @@ uv sync
 ```
 
 ## Classification Baseline
-The classification baseline results can be found in `src/inv_plts/multilabel_classification`.
+The classification baseline results can be found in [src/inv_plts/multilabel_classification](src/inv_plts/multilabel_classification).
 
 ### Training
-To train a classification baseline model run the following command `uv run python -m inv_plts.multilabel_classification.train --model resnet50`
-More information on command line arguments can be found in `src/inv_plts/multilabel_classification.config.py`
-More examples of these commands can be found in `scripts/train_classifiers.sh`
+To train a classification baseline model run the following command 
+```
+uv run python -m inv_plts.multilabel_classification.train --model resnet50
+```
+
+More information on command line arguments can be found in [src/inv_plts/multilabel_classification.config.py](src/inv_plts/multilabel_classification.config.py)
+
+More examples of these commands can be found in [scripts/train_classifiers.sh](scripts/train_classifiers.sh)
 
 ### Evaluation
-To evaluate a classification baseline model run the following command `uv run python -m inv_plts.multilabel_classification.basic_evaluate --model resnet50`
-More information on command line arguments can be found in `src/inv_plts/multilabel_classification.basic_evalute.py`
-More examples of these commands can be found in `scripts/evaluate_classifiers.sh`
+To evaluate a classification baseline model run the following command 
+```
+uv run python -m inv_plts.multilabel_classification.basic_evaluate --model resnet50
+```
+More information on command line arguments can be found in [src/inv_plts/multilabel_classification.basic_evalute.py](src/inv_plts/multilabel_classification.basic_evalute.py)
+
+
+More examples of these commands can be found in [scripts/evaluate_classifiers.sh](scripts/evaluate_classifiers.sh)
 
 ### Models
 We report classification results for the following models: [ViT](https://arxiv.org/abs/2010.11929), [Resnet](https://arxiv.org/abs/1512.03385), [ConvNext](https://arxiv.org/abs/2201.03545), [CvT](https://arxiv.org/abs/2103.15808), [MaxViT](https://arxiv.org/abs/2204.01697)
 
 ## Faster R-CNN baseline
-The [Faster R-CNN](https://arxiv.org/abs/1506.01497) baseline can be ran with the following notebook: `notebooks/rcnn_baseline/FasterRCNN_pipeline.ipynb`. The training and test splits are also given in `data/rcnn_cropped_annotations_[test,train].csv`. The archived images used to produce these results is available in the [images](https://huggingface.co/datasets/imageomics/invasive_plants_hawaii/tree/main/images) folder of our HuggingFace Repository (filename : `rcnn_images.zip`). 
+The [Faster R-CNN](https://arxiv.org/abs/1506.01497) baseline can be ran with the following notebook: [notebooks/rcnn_baseline/FasterRCNN_pipeline.ipynb](notebooks/rcnn_baseline/FasterRCNN_pipeline.ipynb). The training and test splits are also given in [data](data)/`rcnn_cropped_annotations_[test,train].csv`. The archived images used to produce these results is available in the [images](https://huggingface.co/datasets/imageomics/invasive_plants_hawaii/tree/main/images) folder of our HuggingFace Repository (filename : `rcnn_images.zip`). 
 
 ## Zero-shot Segmentation using Molmo and SAM2 
-The code for running [Molmo](https://arxiv.org/abs/2409.17146) and [SAM2](https://arxiv.org/abs/2408.00714) are in the corresponding notebooks in this directory: `notebooks/zero_shot_segmentation_pipeline`. Some example image names used for the qualitative analysis is provided in `data/sample_images.csv`. First, we need to run the molmo notebook `notebooks/zero_shot_segmentation_pipeline/run_molmo.ipynb` to generate points. Then, we need to run the sam2 notebook `notebooks/zero_shot_segmentation_pipeline/run_sam2_and_visualize.ipynb` to generate segmentation masks and visualize on images. 
+The code for running [Molmo](https://arxiv.org/abs/2409.17146) and [SAM2](https://arxiv.org/abs/2408.00714) are in the corresponding notebooks in this directory: [notebooks/zero_shot_segmentation_pipeline](notebooks/zero_shot_segmentation_pipeline). Some example image names used for the qualitative analysis is provided in [data/sample_images.csv](data/sample_images.csv). First, we need to run the molmo notebook [notebooks/zero_shot_segmentation_pipeline/run_molmo.ipynb](notebooks/zero_shot_segmentation_pipeline/run_molmo.ipynb) to generate points. Then, we need to run the sam2 notebook [notebooks/zero_shot_segmentation_pipeline/run_sam2_and_visualize.ipynb](notebooks/zero_shot_segmentation_pipeline/run_sam2_and_visualize.ipynb) to generate segmentation masks and visualize on images. 
 
 ## Leaf Reconstruction
 
-The code for our Leaf Reconstruction baseline is available in the `scripts/leaf_reconstruction`. It contains the code to reproduce the results shown in our report (`scripts/leaf_reconstruction/get_absolute_error.py`), as well as the code to compute the ground truth damage ratio (`scripts/leaf_reconstruction/damage_calculation_ground_truth.py`). The code for testing HerbiEstim on a set of images can be found in the original repository of the authors [here](https://github.com/ZihuiWang1/HerbiEstim). The archived images used to produce our results is available in the [images](https://huggingface.co/datasets/imageomics/invasive_plants_hawaii/tree/main/images) folder of our HuggingFace Repository (filename : `Dataset_Leaf_Reconstruction.zip`). 
+The code for our Leaf Reconstruction baseline is available in the [scripts/leaf_reconstruction](scripts/leaf_reconstruction). It contains the code to reproduce the results shown in our report ([scripts/leaf_reconstruction/get_absolute_error.py](scripts/leaf_reconstruction/get_absolute_error.py)), as well as the code to compute the ground truth damage ratio ([scripts/leaf_reconstruction/damage_calculation_ground_truth.py](scripts/leaf_reconstruction/damage_calculation_ground_truth.py)). The code for testing HerbiEstim on a set of images can be found in the original repository of the authors [here](https://github.com/ZihuiWang1/HerbiEstim). The archived images used to produce our results is available in the [images](https://huggingface.co/datasets/imageomics/invasive_plants_hawaii/tree/main/images) folder of our HuggingFace Repository (filename : `Dataset_Leaf_Reconstruction.zip`). 
 
 ## Acknowledgement
 

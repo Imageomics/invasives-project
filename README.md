@@ -1,4 +1,4 @@
-# Invasives Species Biocontrol Quantification
+# Invasives Species Biocontrol Quantification [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17981675.svg)](https://doi.org/10.5281/zenodo.17981675)
 Repository for the invasive species biocontrol quantification project as part of the AI &amp; Ecology Course field component in HI. The data associated with this project is available on Hugging Face: [Imageomics/invasive_plants_hawaii](https://huggingface.co/datasets/imageomics/invasive_plants_hawaii).
 
 ## Abstract
@@ -57,6 +57,7 @@ Our code (this repository):
 ```
 @software{invasive_species_code,
   author = {David Carlyn and Catherine Villeneuve and Kazi Sajeed Mehrab and Leonardo Viotti},
+  doi = {10.5281/zenodo.17981675},
   title = {Invasives Species Biocontrol Quantification},
   version = {v1.0.0},
   year = {2025}
